@@ -48,3 +48,6 @@ find $SRC/libpng -name "*.png" | grep -v crashers | \
 
 cp $SRC/libpng/contrib/oss-fuzz/*.dict \
      $SRC/libpng/contrib/oss-fuzz/*.options $OUT/
+$CXX $CXXFLAGS -I. contrib/oss-fuzz/png_get_metadata_fuzzer.cc -o $OUT/png_get_metadata_fuzzer 
+$LIB_FUZZING_ENGINE
+
