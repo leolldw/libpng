@@ -708,11 +708,7 @@ AS_HELP_STRING([[[--enable-riscv-rvv]]],
 # or where RISC-V optimizations were explicitly requested (this allows a fallback
 # if a future host CPU does not match 'riscv*')
 
-AM_CONDITIONAL([PNG_RISCV_RVV],
-   [test "$enable_riscv_rvv" != 'no' &&
-    case "$host_cpu" in
-      riscv*) : ;;
-    esac])
+AM_CONDITIONAL([PNG_RISCV_RVV], [false])
 
 AC_MSG_NOTICE([[Extra options for compiler: $PNG_COPTS]])
 
