@@ -31,7 +31,8 @@ cat scripts/pnglibconf.dfa | \
 mv scripts/pnglibconf.dfa.temp scripts/pnglibconf.dfa
 
 # build the libpng library.
-sed -i '' '/riscv\*)/d' configure.ac 
+# Patch riscv* syntax error in configure.ac (portable version)
+grep -v 'riscv*)' configure.ac > configure.ac.patched && mv configure.ac.patched configure.ac
 autoreconf -f -i
 ./configure --with-libpng-prefix=OSS_FUZZ_
 make -j$(nproc) clean
